@@ -3,11 +3,17 @@ package com.dgsh.helper;
 import static org.junit.Assert.*;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class QuckBeforeAfterTest {
 
+	@BeforeClass
+	public static void beforeClass() {
+		System.out.println("Before Class");
+	}
 	
 	@Before
 	public void beforeTest() {
@@ -25,6 +31,11 @@ public class QuckBeforeAfterTest {
 	@After
 	public void afterTest() {
 		System.out.println("After T	est..");
+	}
+	
+	@AfterClass
+	public static void afterClass() {
+		System.out.println("After Class");
 	}
 
 }
