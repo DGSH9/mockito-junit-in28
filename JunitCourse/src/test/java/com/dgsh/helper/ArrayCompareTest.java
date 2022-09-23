@@ -15,6 +15,13 @@ public class ArrayCompareTest {
 		Arrays.sort(numbers);
 		assertArrayEquals(expected, numbers);
 	}
+	
+	@Test(expected = NullPointerException.class)
+	public void testArraySort_Null() {
+		int[] numbers = null;
+		Arrays.sort(numbers);
+		
+	}
 
 	
 
