@@ -30,7 +30,5 @@ public class ArrayCompareTest {
 			arr1[0]=i;
 			Arrays.sort(arr1);
 		}
-		
 	}
-
 }

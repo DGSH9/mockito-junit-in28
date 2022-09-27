@@ -1,52 +1,44 @@
-
 package com.dgsh.helper;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import javax.swing.text.StyledEditorKit.BoldAction;
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class StringHelperParameterizedTest {
 	
+	private String input;
+	private String expectedOutput;
 	
+	
+	public StringHelperParameterizedTest(String input, String expectedOutput) {
+		super();
+		this.input = input;
+		this.expectedOutput = expectedOutput;
+	}
+
+	//AACD => CD	ACD => CD
 	StringHelper stringHelper = new StringHelper();
+	
+	@Parameters
+	public static Collection<String[]> testConditions(){
+		String expectedOutputes[][]= {{"AACD","CD"},{"ACD","CD"}};
+		return Arrays.asList(expectedOutputes);
+	}
+	
+	
 	@Test
-	public void testTruncateAInFirst2Positions_Ainfirst2Positions() {
+	public void testTruncateAInFirst2Positions() {
 		//AACD => CD,	ACD => CD,	CDEF => DEF,	CDAA => CD	
-		assertEquals("CD", stringHelper.truncateAInFirst2Positions("AACD"));	
-		assertEquals("CD", stringHelper.truncateAInFirst2Positions("ACD"));	
+		assertEquals(expectedOutput, stringHelper.truncateAInFirst2Positions(input));	
 	}
 	
-	@Test
-	public void testTruncateAInFirst2Positions_AinFirstPosition(){
-		assertEquals("CD", stringHelper.truncateAInFirst2Positions("ACD"));
-	}
 	
-	@Test
-	public void testTruncateAInFirst2Positions_AinThirdNFourthPositions() {
-		assertEquals("DEF",stringHelper.truncateAInFirst2Positions("ADEF"));
-		assertEquals("CD",stringHelper.truncateAInFirst2Positions("CDAA"));
-	}
 	
-	//ABCD => false,	ABAB => true,	AB => true,	A => false
-	@Test
-	public void testAreFirstAndLastTwoCharactersTheSame_BasicNegativeScenario() {
-		assertEquals(true, stringHelper.areFirstAndLastTwoCharactersTheSame("ABAB"));
-	}
-	
-	@Test
-	public void testAreFirstAndLastTwoCharactersTheSame_BasicPositiveScenario() {
-		assertEquals(true, stringHelper.areFirstAndLastTwoCharactersTheSame("ABAB"));
-	}
-	@Test
-	public void testAreFirstAndLastTwoCharactersTheSame_BasicThirdScenario() {
-		assertEquals(true, stringHelper.areFirstAndLastTwoCharactersTheSame("AB"));
-	}
-	@Test
-	public void testAreFirstAndLastTwoCharactersTheSame_BasicFourthScenario() {
-		assertEquals(false, stringHelper.areFirstAndLastTwoCharactersTheSame("A"));
-	}
 }
