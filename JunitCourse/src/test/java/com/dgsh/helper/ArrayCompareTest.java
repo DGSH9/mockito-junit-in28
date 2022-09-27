@@ -22,7 +22,15 @@ public class ArrayCompareTest {
 		Arrays.sort(numbers);
 		
 	}
-
-	
+	//testing performance
+	@Test(timeout = 1000)
+	public void testSort_ArrayPerformance() {
+		int arr1[] = {12,13,4};
+		for(int i=0;i<=1000000;i++) {
+			arr1[0]=i;
+			Arrays.sort(arr1);
+		}
+		
+	}
 
 }

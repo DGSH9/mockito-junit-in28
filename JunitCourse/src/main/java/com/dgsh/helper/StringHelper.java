@@ -28,5 +28,5 @@ public class StringHelper {
 
 		return first2Chars.equals(last2Chars);
 	}
-
+	
 }
